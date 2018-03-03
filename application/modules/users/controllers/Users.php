@@ -12,7 +12,9 @@ class Users extends CI_Controller {
 	public function login()
 	{
 		$id_role = $this->model_users->logged_in();
+
 		$this->model_users->redirect_in($id_role);
+		
 		$data['error'] = '';
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
@@ -25,17 +27,20 @@ class Users extends CI_Controller {
 			} else
 			{
 				$this->session->set_userdata($user_data);
-				switch ($user_data['id_role']) {
-					case '0':
-					redirect('administrator','refresh');
-					break;
-					case '10':
-					redirect('alumni','refresh');
-					break;
-					default:
-					redirect('admin_fakultas','refresh');
-					break;
-				}
+				redirect('dashboard');
+				
+
+				// switch ($user_data['id_role']) {
+				// 	case '0':
+				// 	redirect('administrator','refresh');
+				// 	break;
+				// 	case '11':
+				// 	redirect('alumni','refresh');
+				// 	break;
+				// 	default:
+				// 	redirect('admin_fakultas','refresh');
+				// 	break;
+				// }
 			}
 		}
 		$this->load->view('view_login', $data);

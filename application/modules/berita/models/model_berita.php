@@ -52,7 +52,6 @@ class Model_berita extends CI_Model {
 		$this->db->from('berita');
 		$this->db->join('users', 'berita.id_user = users.id_user');
 		$this->db->join('role', 'users.id_role = role.id_role');
-		$this->db->where('berita.aktif', 'Y');
 		$this->db->where('berita.id', $id);
 		return 	$this->db->get()->row_array();
 	}

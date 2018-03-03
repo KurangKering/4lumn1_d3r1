@@ -58,21 +58,9 @@ class Model_alumni extends CI_Model {
 		
 		$data_alumni =  $this->db->get()->result_array();
 
-		$populateTable = '';
-		$number = 1;
-		foreach ($data_alumni as $key => $alumni) {
-			$populateTable .=   '<tr>' . PHP_EOL;
-			$populateTable .=		'<td>'. $number++ .'</td>'. PHP_EOL;
-			$populateTable .=		'<td class="text-left">'.$alumni['npm'].'</td>'. PHP_EOL;
-			$populateTable .=		'<td>'.$alumni['nama'].'</td>'. PHP_EOL;
-			$populateTable .=		'<td>'.$alumni['nama_jurusan'].'</td>'. PHP_EOL;
-			$populateTable .=		'<td>'.$alumni['nama_fakultas'].'</td>';
-			$populateTable .=		'<td>'.$alumni['tahun_lulus_periode'].'</td>'. PHP_EOL;
-			$populateTable .=	    '</tr>';
-		};
 		
 		$result['total'] = count($data_alumni);
-		$result['data_alumni'] = $populateTable;
+		$result['data_alumni'] = $data_alumni;
 		$result['kondisi'] = $kondisi;
 		return $result;
 

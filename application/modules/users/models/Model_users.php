@@ -25,15 +25,14 @@ class Model_users extends CI_Model {
 				{
 					$result['error'] = 'User Belum Mendapatkan Hak Akses';
 				}
-			} else
-			if (in_array($user_data['id_role'], range(1,9))) {
+			} else 
+			if (in_array($user_data['id_role'], range(1,10))) {
 				$result['id_fakultas'] = $user_data['id_role'];
 				$result['id_user'] = $user_data['id_user'];
 				$result['username'] = $user_data['username'];
 				$result['id_role'] = $user_data['id_role'];
 			} else 
-
-			{
+			if ($user_data['id_role'] == '0') {
 				$result['id_fakultas'] = '0';
 				$result['id_user'] = $user_data['id_user'];
 				$result['username'] = $user_data['username'];
@@ -48,25 +47,23 @@ class Model_users extends CI_Model {
 	public function logged_in()
 	{
 		$id_role = $this->session->userdata('id_role');
-		if ($id_role) 
-			return $id_role;
-		return false;
+		return $id_role;
 	}
 	public function redirect_in($id_role = null)
 	{
-		if ($id_role) {
 			switch ($id_role) {
+				case '11' :
+				redirect('alumni','refresh');
+				break;
+				case range(1,10):
+				redirect('admin_fakultas','refresh');
+				break;
 				case '0':
 				redirect('administrator','refresh');
 				break;
-				case '10' :
-				redirect('alumni','refresh');
-				break;
-				default:
-				redirect('admin_fakultas','refresh');
+				default: 
 				break;
 			}
-		}
 
 	}
 

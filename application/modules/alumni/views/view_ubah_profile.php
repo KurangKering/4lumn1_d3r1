@@ -22,7 +22,7 @@
                         <label class="col-sm-3 control-label">Password</label>
                         <div class="col-sm-9">
                             <div class="input-group">
-                                <input required type="password"  name="password" class="form-control">
+                                <input  type="password"  name="password" class="form-control">
                                 <span class="input-group-btn"> <button type="button" onclick="if(password.type=='text')password.type='password'; else password.type='text';" class="btn btn-empty"><i class="fa fa-eye"></i>
                             </button> </span>
 

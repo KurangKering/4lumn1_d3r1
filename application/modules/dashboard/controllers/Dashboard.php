@@ -9,7 +9,8 @@ class Dashboard extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->template->title('Dashboard');
+
+		$this->template->title('Sistem Informasi Alumni Universitas Islam Riau');
 		$this->template->render('view_dashboard');
 	}
 

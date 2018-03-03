@@ -84,9 +84,9 @@ class Model_administrator extends CI_Model {
 		$this->datatables->from('alumni');
 		$this->datatables->join('jurusan', 'alumni.id_jurusan = jurusan.id_jurusan');
 		$this->datatables->join('fakultas', 'jurusan.id_fakultas = fakultas.id_fakultas');
+		$this->datatables->where('alumni.aktif', '0');
 		$this->datatables->add_column('detail', '<button class="btn btn-primary" onclick="showModals($1)">Detail</button>', 'npm');
 		$this->datatables->add_column('nomor', '0');
-
 		$this->datatables->add_column('tahun_lulus_periode', '$1 / $2', 'tahun_lulus,periode_lulus' );
 		return $this->datatables->generate();
 	}

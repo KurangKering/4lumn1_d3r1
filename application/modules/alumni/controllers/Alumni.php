@@ -39,7 +39,7 @@ class Alumni extends CI_Controller {
 				$this->load->library('pdf');
 				$this->dompdf->set_option('isRemoteEnabled', TRUE);
 				$this->dompdf->load_html($output);
-				$this->dompdf->set_paper("legal", "landscape");
+				$this->dompdf->set_paper("A4", "landscape");
 				$this->dompdf->render();
 				$this->dompdf->stream("Laporan_Daftar_Alumni",array("Attachment"=>0));
 			} else
@@ -78,7 +78,7 @@ class Alumni extends CI_Controller {
 
 	public function index()
 	{
-		$this->template->render('view_dashboard');	
+		redirect('dashboard','refresh');
 	}
 
 	private function upload_photo($npm,$filename)
@@ -156,8 +156,12 @@ class Alumni extends CI_Controller {
 	}
 	public function register()
 	{
-		if ($this->input->post()) {
 
+		$this->form_validation->set_rules('npm', 'NPM', 'trim|required|is_unique[alumni.npm]',
+			array('is_unique' => "%s Telah Ada Pada Database"
+				)
+			);
+		if ($this->form_validation->run() == TRUE) {
 			$container['npm']                 = $this->input->post('npm');
 			$container['email']               = $this->input->post('email');
 			$container['nama']                = $this->input->post('nama') ;
@@ -181,21 +185,20 @@ class Alumni extends CI_Controller {
 			$user['password']            = $this->input->post('password');
 			$user['id_role']            = '11';
 			$user['date_created']            = date('Y-m-d H:i:s');
-
 			$photos = $this->upload_photo($container['npm'], 'file_photo');
 			if (isset($photos['upload_data'])) {
 				$container['photo'] = $photos['upload_data']['file_name'];
 
 			}
-
 			if ($this->model_alumni->register_alumni($container, $user) ) {
 				$this->load->view('view_register_sukses');
 				return;
 			} 
 
-
-
+		} else {
+			$data['error'] = validation_errors();
 		}
+		
 
 		$this->form_validation->set_rules('npm', 'NPM', 'trim|required|is_unique[alumni.npm]');
 		$this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');

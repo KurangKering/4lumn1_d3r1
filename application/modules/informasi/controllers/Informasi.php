@@ -81,7 +81,7 @@ class Informasi extends CI_Controller {
 	}
 	public function lihat_informasi()
 	{
-	
+		
 		$id_fakultas = $this->session->userdata('id_fakultas');
 		$id_role = $this->session->userdata('id_role');
 		$id_informasi = $this->uri->segment(3);
@@ -102,7 +102,7 @@ class Informasi extends CI_Controller {
 			$data['isi'] = $this->input->post('isi');
 			$data['aktif'] = $this->input->post('aktif');
 			$data['id_fakultas'] = $this->input->post('id_fakultas');
-			$old_gambar = $this->input->post('gambar');
+			$old_gambar = $this->input->post('old_gambar');
 			$nama_file = isset($old_gambar) ? $old_gambar : strtotime(date('Y:m:d H:i:s'));
 			$uploadPhoto = $this->upload_photo("gambar", $nama_file);
 			if (!isset($uploadPhoto['error'])  ) {
@@ -116,6 +116,10 @@ class Informasi extends CI_Controller {
 		$data['informasi'] = $this->model_informasi->getDetailInformasi($id);
 		if ($id_user != $data['informasi']['id_user']) {
 			redirect('informasi/kelola_informasi');
+		}
+		if ($this->session->userdata('id_role') == 11) {
+			$id_fakultas = $this->session->userdata('id_fakultas');
+			$this->db->where('id_fakultas',$id_fakultas);
 		}
 		$data['daftar_fakultas'] = $this->db->get('fakultas')->result_array();
 		$this->template->css_add('assets/template/inspinia_271/css/plugins/jasny/jasny-bootstrap.min.css');
@@ -146,6 +150,11 @@ class Informasi extends CI_Controller {
 			redirect('informasi/kelola_informasi','refresh');
 		}
 
+
+		if ($this->session->userdata('id_role') == 11) {
+			$id_fakultas = $this->session->userdata('id_fakultas');
+			$this->db->where('id_fakultas',$id_fakultas);
+		}
 		$data['daftar_fakultas'] = $this->db->get('fakultas')->result_array();
 		$this->template->css_add('assets/template/inspinia_271/css/plugins/jasny/jasny-bootstrap.min.css');
 		$this->template->js_add('assets/template/inspinia_271/js/plugins/jasny/jasny-bootstrap.min.js');

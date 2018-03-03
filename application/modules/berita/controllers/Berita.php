@@ -16,7 +16,7 @@ class Berita extends CI_Controller {
 
 	public function daftar_berita()
 	{	
-	
+		
 		$limit = 6;
 		$offset = $this->uri->segment(3) ? $this->uri->segment(3) : 0;
 		$totalRows = $this->model_berita->getTotalRowBerita();
@@ -113,14 +113,17 @@ class Berita extends CI_Controller {
 
 	public function ubah_berita()
 	{
+
+		
 		$id_user = $this->session->userdata('id_user');
+
 		if ($this->input->post()) {
 			$id = $this->input->post('id');
 			$data['judul'] = $this->input->post('judul');
 			$data['isi'] = $this->input->post('isi');
 			$data['aktif'] = $this->input->post('aktif');
 
-			$old_gambar = $this->input->post('gambar');
+			$old_gambar = $this->input->post('old_gambar');
 			$nama_file = isset($old_gambar) ? $old_gambar : strtotime(date('Y:m:d H:i:s'));
 			$uploadPhoto = $this->upload_photo("gambar", $nama_file);
 			if (!isset($uploadPhoto['error'])  ) {
@@ -135,6 +138,7 @@ class Berita extends CI_Controller {
 		$id = $this->uri->segment(3);
 		$data['berita'] = $this->model_berita->getDetailBerita($id);
 		if ($id_user != $data['berita']['id_user']) {
+			
 			redirect('berita/kelola_berita');
 		}
 		$this->template->css_add('assets/template/inspinia_271/css/plugins/jasny/jasny-bootstrap.min.css');

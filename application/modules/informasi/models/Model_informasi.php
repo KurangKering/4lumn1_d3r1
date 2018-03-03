@@ -16,7 +16,7 @@ class Model_informasi extends CI_Model {
 	{
 		$id_role = $this->session->userdata('id_role');
 		$allowed_fakultas = array();
-		if ($id_role == '10') {
+		if ($id_role == '11') {
 			$npm = $this->session->userdata('username');
 			$this->db->select('fakultas.id_fakultas');
 			$this->db->from('alumni');
@@ -56,7 +56,7 @@ class Model_informasi extends CI_Model {
 	{	
 		$id_role = $this->session->userdata('id_role');
 		$allowed_fakultas = array();
-		if ($id_role == '10') {
+		if ($id_role == '11') {
 			$npm = $this->session->userdata('username');
 			$this->db->select('fakultas.id_fakultas');
 			$this->db->from('alumni');
@@ -105,7 +105,6 @@ class Model_informasi extends CI_Model {
 		$this->db->join('alumni', 'users.username = alumni.npm', 'LEFT');
 		$this->db->join('role', 'users.id_role = role.id_role', 'LEFT');
 
-		$this->db->where('informasi.aktif', 'Y');
 		$this->db->where('id', $id);
 		$res = $this->db->get()->row_array();
 		

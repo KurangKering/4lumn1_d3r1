@@ -32,7 +32,8 @@
                         <?php echo tanggal_indo($date, true); ?>
                       </td>
                       <td>
-                        <?php if ($informasi['id_fakultas'] === '0'): ?>
+                     
+                        <?php if ($informasi['id_fakultas'] == '0'): ?>
                           <span class="label label-primary">Umum</span>
                         <?php else: ?>
                           <span class="label label-info">Fakultas <?php echo $informasi['nama_fakultas'] ?></span>

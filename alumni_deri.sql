@@ -20,7 +20,7 @@ USE `alumni_deri`;
 -- Dumping structure for table alumni_deri.alumni
 DROP TABLE IF EXISTS `alumni`;
 CREATE TABLE IF NOT EXISTS `alumni` (
-  `npm` char(15) NOT NULL,
+  `npm` char(9) NOT NULL,
   `email` varchar(100) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `jenis_kelamin` enum('LK','PR') NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `alumni` (
   CONSTRAINT `FK_alumni_status_pekerjaan` FOREIGN KEY (`id_status_pekerjaan`) REFERENCES `status_pekerjaan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table alumni_deri.alumni: ~0 rows (approximately)
+-- Dumping data for table alumni_deri.alumni: ~2 rows (approximately)
 /*!40000 ALTER TABLE `alumni` DISABLE KEYS */;
 /*!40000 ALTER TABLE `alumni` ENABLE KEYS */;
 
@@ -64,9 +64,9 @@ CREATE TABLE IF NOT EXISTS `berita` (
   PRIMARY KEY (`id`),
   KEY `FK_berita_users` (`id_user`),
   CONSTRAINT `FK_berita_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table alumni_deri.berita: ~0 rows (approximately)
+-- Dumping data for table alumni_deri.berita: ~1 rows (approximately)
 /*!40000 ALTER TABLE `berita` DISABLE KEYS */;
 /*!40000 ALTER TABLE `berita` ENABLE KEYS */;
 
@@ -98,15 +98,15 @@ CREATE TABLE IF NOT EXISTS `gallery` (
   `id_gallery` int(11) NOT NULL AUTO_INCREMENT,
   `judul` varchar(200) NOT NULL,
   `date_created` datetime NOT NULL,
-  `npm_author` char(15) NOT NULL,
+  `npm_author` char(9) NOT NULL,
   `aktif` enum('1','0') NOT NULL,
   `nama_file` varchar(50) NOT NULL,
   PRIMARY KEY (`id_gallery`),
   KEY `FK_gallery_alumni` (`npm_author`),
-  CONSTRAINT `FK_gallery_alumni` FOREIGN KEY (`npm_author`) REFERENCES `alumni` (`npm`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_gallery_alumni` FOREIGN KEY (`npm_author`) REFERENCES `alumni` (`npm`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table alumni_deri.gallery: ~0 rows (approximately)
+-- Dumping data for table alumni_deri.gallery: ~1 rows (approximately)
 /*!40000 ALTER TABLE `gallery` DISABLE KEYS */;
 /*!40000 ALTER TABLE `gallery` ENABLE KEYS */;
 
@@ -124,9 +124,9 @@ CREATE TABLE IF NOT EXISTS `informasi` (
   PRIMARY KEY (`id`),
   KEY `FK_informasi_users` (`id_user`),
   CONSTRAINT `FK_informasi_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table alumni_deri.informasi: ~0 rows (approximately)
+-- Dumping data for table alumni_deri.informasi: ~3 rows (approximately)
 /*!40000 ALTER TABLE `informasi` DISABLE KEYS */;
 /*!40000 ALTER TABLE `informasi` ENABLE KEYS */;
 
@@ -245,9 +245,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username` (`username`),
   KEY `FK_users_role` (`id_role`),
   CONSTRAINT `FK_users_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Dumping data for table alumni_deri.users: ~10 rows (approximately)
+-- Dumping data for table alumni_deri.users: ~12 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 REPLACE INTO `users` (`id_user`, `username`, `password`, `date_created`, `id_role`) VALUES
 	(1, 'admin_baak', 'admin_baak', '2018-02-25 13:56:35', 0),

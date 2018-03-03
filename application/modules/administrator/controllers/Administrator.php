@@ -27,8 +27,7 @@ class Administrator extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->template->title('Dashboard');
-		$this->template->render('view_dashboard');
+		redirect('dashboard','refresh');
 	}
 	
 	public function json_get_list_persetujuan_alumni()
@@ -43,6 +42,7 @@ class Administrator extends CI_Controller {
 	{
 		$npm = $this->input->post('npm');
 		$pilihan = $this->input->post('pilihan');
+
 		$res = $this->model_administrator->set_aktif_alumni($pilihan,$npm);
 		echo json_encode('OK');
 

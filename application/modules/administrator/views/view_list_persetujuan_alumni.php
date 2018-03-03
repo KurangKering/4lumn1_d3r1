@@ -206,7 +206,6 @@ $(document).ready(function() {
       data: {pilihan: pilihan, npm : npm},
     })
     .done(function() {
-      console.log("success");
       $('#modal-detail').modal('hide');
       table_persetujuan.ajax.reload();
 
@@ -269,7 +268,6 @@ function showModals( npm )
     success: function(res) {
       hidePleaseWait();
       setModalData(res);
-      console.log(res);
     }
   });
 

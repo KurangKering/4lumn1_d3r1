@@ -71,34 +71,76 @@ if (isset($username) && isset($id_role)) {
               
             </span>
             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo isset($user['nama_user']) ? $user['nama_user'] : '' ?></strong>
-          </span> <span class="text-muted text-xs block"><?php echo isset($user['nama_role']) ? $user['nama_role'] : '' ?></span> </span> </a>
+            </span> <span class="text-muted text-xs block"><?php echo isset($user['nama_role']) ? $user['nama_role'] : '' ?></span> </span> </a>
 
-        </div>
-        <div class="logo-element">
-          IN+
-        </div>
-      </li>
-      <!--  Struktur Menu Alumni-->
-      <?php if ($id_role == '10'): ?>
+          </div>
+          <div class="logo-element">
+            IN+
+          </div>
+        </li>
+        <!--  Struktur Menu Alumni-->
+        <?php if ($id_role == '11'): ?>
 
+          <li>
+            <a href="<?php echo site_url() . 'dashboard' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
+          </li>
+          <li>
+            <a href="<?php echo site_url() . 'alumni/daftar_alumni' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Daftar Alumni</span></a>
+          </li>
+          <li>
+            <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Gallery</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li><a href="<?php echo site_url() . 'gallery/daftar_gallery' ?>">Lihat Gallery</a></li>
+              <li><a href="<?php echo site_url() . 'gallery/kelola_gallery' ?>">Kelola Gallery</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="<?php echo site_url() . 'berita/daftar_berita' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Seputar Kampus</span></a>
+          </li>
+          <li>
+            <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Informasi</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li><a href="<?php echo site_url() . 'informasi/daftar_informasi' ?>">Lihat Informasi</a></li>
+              <li><a href="<?php echo site_url() . 'informasi/kelola_informasi' ?>">Kelola Informasi</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="<?php echo site_url() . 'alumni/profile' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Profile</span></a>
+          </li>
+          <!-- administrator -->
+        <?php elseif ($id_role == '0') : ?>
+          <li>
+            <a href="<?php echo site_url() . 'dashboard' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
+          </li>
+          <li>
+            <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Informasi</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li><a href="<?php echo site_url() . 'informasi/daftar_informasi' ?>">Lihat Informasi</a></li>
+              <li><a href="<?php echo site_url() . 'informasi/kelola_informasi' ?>">Kelola Informasi</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Berita</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li><a href="<?php echo site_url() . 'berita/daftar_berita' ?>">Lihat Berita</a></li>
+              <li><a href="<?php echo site_url() . 'berita/kelola_berita' ?>">Kelola Berita</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Alumni</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li><a href="<?php echo site_url() . 'alumni/daftar_alumni'?>">Daftar Alumni</a></li>
+              <li><a href="<?php echo site_url() . 'alumni/menu_cetak_data_alumni'?>">Cetak Data Alumni</a></li>
+              <li><a href="<?php echo site_url() . 'administrator/grafik' ?>">Grafik Pekerjaan Alumni</a></li>
+              <li><a href="<?php echo site_url() . 'administrator/list_persetujuan_alumni' ?>">Persetujuan Alumni</a></li>
+            </ul>
+          </li>
+         <!-- admin_fakultass -->
+       <?php elseif ($id_role == range(1,10)) : ?>
         <li>
           <a href="<?php echo site_url() . 'dashboard' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
-        </li>
-        <li>
-          <a href="<?php echo site_url() . 'alumni/daftar_alumni' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Daftar Alumni</span></a>
-        </li>
-        <li>
-          <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Gallery</span> <span class="fa arrow"></span></a>
-          <ul class="nav nav-second-level collapse">
-            <li><a href="<?php echo site_url() . 'gallery/daftar_gallery' ?>">Lihat Gallery</a></li>
-            <li><a href="<?php echo site_url() . 'gallery/kelola_gallery' ?>">Kelola Gallery</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Seputar Kampus</span> <span class="fa arrow"></span></a>
-          <ul class="nav nav-second-level collapse">
-            <li><a href="<?php echo site_url() . 'berita/daftar_berita' ?>">Lihat Seputar Kampus</a></li>
-          </ul>
         </li>
         <li>
           <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Informasi</span> <span class="fa arrow"></span></a>
@@ -106,41 +148,21 @@ if (isset($username) && isset($id_role)) {
             <li><a href="<?php echo site_url() . 'informasi/daftar_informasi' ?>">Lihat Informasi</a></li>
             <li><a href="<?php echo site_url() . 'informasi/kelola_informasi' ?>">Kelola Informasi</a></li>
           </ul>
+        </li>
+        <li>
+        <a href="<?php echo site_url() . 'berita/daftar_berita' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Seputar Kampus</span></a>
         </li>
         
-        <li>
-          <a href="<?php echo site_url() . 'alumni/profile' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Profile</span></a>
-        </li>
-        <!-- administrator -->
-      <?php elseif ($id_role == '0') : ?>
-        <li>
-          <a href="<?php echo site_url() . 'dashboard' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
-        </li>
-        <li>
-          <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Informasi</span> <span class="fa arrow"></span></a>
-          <ul class="nav nav-second-level collapse">
-            <li><a href="<?php echo site_url() . 'informasi/daftar_informasi' ?>">Lihat Informasi</a></li>
-            <li><a href="<?php echo site_url() . 'informasi/kelola_informasi' ?>">Kelola Informasi</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Berita</span> <span class="fa arrow"></span></a>
-          <ul class="nav nav-second-level collapse">
-            <li><a href="<?php echo site_url() . 'berita/daftar_berita' ?>">Lihat Berita</a></li>
-            <li><a href="<?php echo site_url() . 'berita/kelola_berita' ?>">Kelola Berita</a></li>
-          </ul>
-        </li>
         <li>
           <a href="<?php echo site_url() . 'assets/template/inspinia_271/' ?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Alumni</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level collapse">
             <li><a href="<?php echo site_url() . 'alumni/daftar_alumni'?>">Daftar Alumni</a></li>
             <li><a href="<?php echo site_url() . 'alumni/menu_cetak_data_alumni'?>">Cetak Data Alumni</a></li>
             <li><a href="<?php echo site_url() . 'administrator/grafik' ?>">Grafik Pekerjaan Alumni</a></li>
-            <li><a href="<?php echo site_url() . 'administrator/list_persetujuan_alumni' ?>">Persetujuan Alumni</a></li>
           </ul>
         </li>
       <?php else: ?>
-
+        
       <?php endif ?>
       
       
@@ -175,7 +197,7 @@ if (isset($username) && isset($id_role)) {
   </nav>
 </div>
 <div class="row wrapper border-bottom white-bg page-heading">
-  <div class="col-sm-4">
+  <div class="col-sm-12">
     <h2><?php echo isset($title) ? $title  : '' ?></h2>
 
   </div>
