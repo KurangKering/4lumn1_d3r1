@@ -205,9 +205,9 @@ if (isset($username) && isset($id_role)) {
 </div>
 
 <?php echo $content; ?>
-<div class="footer">
+<div class="footer"
   <div>
-    <strong></strong>  &copy; 2017
+    <strong></strong>  &copy; 2018
   </div>
 </div>
 

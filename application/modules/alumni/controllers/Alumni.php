@@ -8,6 +8,10 @@ class Alumni extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('model_alumni');
+		$this->load->model('users/model_users');
+		if ($this->model_users->logged_in() == null) {
+			redirect('');
+		}
 	}
 
 	public function menu_cetak_data_alumni()
@@ -159,6 +163,10 @@ class Alumni extends CI_Controller {
 
 		$this->form_validation->set_rules('npm', 'NPM', 'trim|required|is_unique[alumni.npm]',
 			array('is_unique' => "%s Telah Ada Pada Database"
+				)
+			);
+		$this->form_validation->set_rules('no_hp', 'Nomor Handphone', 'trim|required|integer',
+			array('integer' => "%s Hanya Boleh Angka"
 				)
 			);
 		if ($this->form_validation->run() == TRUE) {

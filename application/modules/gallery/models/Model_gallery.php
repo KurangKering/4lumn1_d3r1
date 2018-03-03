@@ -32,9 +32,12 @@ class Model_gallery extends CI_Model {
 	}
 	public function get_daftar_gallery($limit,$offset)
 	{	
+		$this->db->select('gallery.*, alumni.nama');
+		$this->db->from('gallery');
+		$this->db->join('alumni', 'gallery.npm_author = alumni.npm');
 		$this->db->order_by('date_created', 'DESC');
 		$this->db->limit($limit,$offset);
-		return $this->db->get('gallery')->result_array();
+		return $this->db->get()->result_array();
 	}
 
 	public function get_total_row_gallery_saya($npm)

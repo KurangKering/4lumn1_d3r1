@@ -7,6 +7,10 @@ class Gallery extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('model_gallery');
+		$this->load->model('users/model_users');
+		if ($this->model_users->logged_in() != 11) {
+			redirect('');
+		}
 	}
 	public function index()
 	{

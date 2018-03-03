@@ -8,6 +8,10 @@ class Admin_fakultas extends CI_Controller {
 		parent::__construct();
 		$id_role = $this->session->userdata('id_role');
 		$this->template->set_template('template_admin_fakultas');
+		$this->load->model('users/model_users');
+		if ($this->model_users->logged_in() == null) {
+			redirect('');
+		}
 	}
 	public function index()
 	{

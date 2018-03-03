@@ -33,10 +33,10 @@ class Model_users extends CI_Model {
 				$result['id_role'] = $user_data['id_role'];
 			} else 
 			if ($user_data['id_role'] == '0') {
-				$result['id_fakultas'] = '0';
-				$result['id_user'] = $user_data['id_user'];
+				$result['id_fakultas'] = strval('0');
+				$result['id_user'] = strval($user_data['id_user']);
 				$result['username'] = $user_data['username'];
-				$result['id_role'] = $user_data['id_role'];
+				$result['id_role'] = strval($user_data['id_role']);
 			}
 		} else {
 			$result['error'] = 'Username / Password Tidak Ditemukan';
@@ -61,8 +61,7 @@ class Model_users extends CI_Model {
 				case '0':
 				redirect('administrator','refresh');
 				break;
-				default: 
-				break;
+
 			}
 
 	}

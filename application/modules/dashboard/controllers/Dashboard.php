@@ -6,6 +6,10 @@ class Dashboard extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('users/model_users');
+		if ($this->model_users->logged_in() == null) {
+			redirect('');
+		}
 	}
 	public function index()
 	{

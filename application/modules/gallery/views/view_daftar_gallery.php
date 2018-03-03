@@ -9,7 +9,7 @@
 					<?php if (isset($gallery)): ?>
 						<div class="lightBoxGallery">
 							<?php foreach ($gallery as $key => $gall): ?>
-								<a href="<?php echo $source . $gall['nama_file'] ?>" title="<?php echo $gall['judul'] ?>" data-gallery=""><img src="<?php echo $thumb . $gall['nama_file']?>"></a>
+								<a href="<?php echo $source . $gall['nama_file'] ?>" title="<?php echo $gall['judul'] ?> By <?php echo $gall['nama'] ?>" data-gallery=""><img src="<?php echo $thumb . $gall['nama_file']?>"></a>
 							<?php endforeach ?>
 							
 							

@@ -5,6 +5,11 @@ class Informasi extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('model_informasi');
+
+		$this->load->model('users/model_users');
+		if ($this->model_users->logged_in() == null) {
+			redirect('');
+		}
 	}
 	public function index()
 	{
