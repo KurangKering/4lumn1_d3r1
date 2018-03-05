@@ -9,9 +9,7 @@ class Alumni extends CI_Controller {
 		parent::__construct();
 		$this->load->model('model_alumni');
 		$this->load->model('users/model_users');
-		if ($this->model_users->logged_in() == null) {
-			redirect('');
-		}
+		
 	}
 
 	public function menu_cetak_data_alumni()
