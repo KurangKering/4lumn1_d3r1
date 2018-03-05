@@ -103,6 +103,8 @@ class Gallery extends CI_Controller {
 		$configFilePhoto['upload_path']          = './assets/files/gallery';
 		$configFilePhoto['allowed_types']        = 'jpg|png';
 		$configFilePhoto['overwrite']        = true;
+		if(!is_dir($configFilePhoto['upload_path'])) mkdir($configFilePhoto['upload_path'], 0777, TRUE);
+
 		$this->upload->initialize($configFilePhoto);
 		if ( ! $this->upload->do_upload($filename))
 		{
@@ -111,6 +113,7 @@ class Gallery extends CI_Controller {
 		{
 			
 
+			$dirthumb = './assets/files/gallery/thumb/';
 			$data = array('upload_data' => $this->upload->data());
 			$config['image_library'] = 'gd2';
 			$config['source_image'] = './assets/files/gallery/' . $data['upload_data']['file_name'];
@@ -119,7 +122,10 @@ class Gallery extends CI_Controller {
 			$config['width']         = 100;
 			$config['height']       = 100;
 			$config['thumb_marker']       = '';
-			$config['new_image']       = './assets/files/gallery/thumb/' . $data['upload_data']['file_name'];
+			$config['new_image']       = $dirthumb . $data['upload_data']['file_name'];
+			if(!is_dir($dirthumb)) mkdir($dirthumb, 0777, TRUE);
+
+
 			$this->load->library('image_lib', $config);
 			$this->image_lib->resize();
 		}

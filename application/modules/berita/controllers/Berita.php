@@ -188,6 +188,8 @@ class Berita extends CI_Controller {
 		$configFilePhoto['upload_path']          = './assets/files/berita';
 		$configFilePhoto['allowed_types']        = 'jpg|png';
 		$configFilePhoto['overwrite']        = true;
+		if(!is_dir($configFilePhoto['upload_path'])) mkdir($configFilePhoto['upload_path'], 0777, TRUE);
+		
 		$this->upload->initialize($configFilePhoto);
 		if ( ! $this->upload->do_upload($filename))
 		{
