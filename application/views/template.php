@@ -138,7 +138,7 @@ if (isset($username) && isset($id_role)) {
             </ul>
           </li>
          <!-- admin_fakultass -->
-       <?php elseif ($id_role == range(1,10)) : ?>
+       <?php elseif ($id_role == '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10') : ?>
         <li>
           <a href="<?php echo site_url() . 'dashboard' ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
         </li>
